@@ -2,15 +2,17 @@
   <div class="app" ref="app-container">
     <div class="filters">
       <h3>Filters ({{ productCount }} showing)</h3>
-      <h4>Brands</h4>
-      <div v-for="option in options" :key="option">
-        <input
-          type="checkbox"
-          :id="option"
-          :value="option"
-          v-model="selectedBrands"
-        />
-        <label :for="option">{{ option }}</label>
+      <div class="brandfilter">
+        <h4>Brands</h4>
+        <div v-for="option in options" :key="option">
+          <input
+            type="checkbox"
+            :id="option"
+            :value="option"
+            v-model="selectedBrands"
+          />
+          <label :for="option">{{ option }}</label>
+        </div>
       </div>
       <button @click="toggleAvailability">
         {{ onlyAvailable ? 'Show all products' : 'Hide all unavailable' }}
@@ -44,7 +46,7 @@ export default {
   },
   setup() {
     const selectedBrands = ref(['all']);
-    const onlyAvailable = ref(true);
+    const onlyAvailable = ref(false);
     const priceOrder = ref(null);
     const sortRelevance = ref(false);
 
@@ -119,5 +121,34 @@ export default {
 
 .link {
   color: #3a7f71;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+.product-grid-item {
+  background: #ddebe8;
+  max-width: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.filters {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

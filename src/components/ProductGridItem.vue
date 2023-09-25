@@ -3,8 +3,6 @@
     <img class="product-image" :src="product.image" />
     <p class="product-name">{{ product.name }}</p>
     <p>{{ product.price }}</p>
-    <p> {{product.rank}} rank </p>
-    <p> {{product.isAvailable}}</p>
   </div>
 </template>
 
